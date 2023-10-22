@@ -1,0 +1,23 @@
+### venv template
+.Python
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+.venv
+pip-selfcheck.json
+
+### dotenv template
+.env
+
+### idea
+.idea
+
+### test src
+test.py
+
+### users id
+users_id.json
