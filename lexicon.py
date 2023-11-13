@@ -8,6 +8,8 @@ class BUTTONS_LEXICON:
     cat_button: str
     fox_button: str
 
+    big_button_1:str
+
 
 @dataclass
 class ANSWER_LEXICON:
@@ -36,8 +38,11 @@ class COMMANDS_LEXICON:
 BUTTONS_LEXICON_RU = BUTTONS_LEXICON(
     dog_button='Собаку🦮',
     cat_button='Котика🐈',
-    fox_button='Лисичку🦊'
+    fox_button='Лисичку🦊',
+
+    big_button_1='БОЛЬШАЯ КНОПКА 1'
 )
+
 
 ANSWER_LEXICON_RU = ANSWER_LEXICON(
     no_animal='Что именно ты хочешь? Лисичку? Котика? Или собачку?',

@@ -1,27 +1,10 @@
-from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, KeyboardButtonPollType, WebAppInfo, InlineKeyboardButton, \
-    InlineKeyboardMarkup
-from aiogram.utils.keyboard import ReplyKeyboardBuilder
+from aiogram.types import (KeyboardButton, ReplyKeyboardMarkup, KeyboardButtonPollType,
+                           WebAppInfo, InlineKeyboardButton, InlineKeyboardMarkup)
+from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
+from keyboards.keyboard_builders import Keyboard, InlineKeyboard
 from lexicon import BUTTONS_LEXICON_RU
 
 
-class Keyboard:
-    def __init__(self, *buttons: str | KeyboardButton, resize_keyboard: bool = True,
-                 is_persistent: bool = False, one_time_keyboard: bool = False):
-        if isinstance(buttons[0], str):
-            self.__buttons = [KeyboardButton(text=f'{button}') for button in buttons]
-        else:
-            self.__buttons = buttons
-        self.resize_keyboard = resize_keyboard
-        self.is_persistent = is_persistent
-        self.one_time_keyboard = one_time_keyboard
-
-    def __call__(self, width: int) -> ReplyKeyboardMarkup:
-        kb_builder = ReplyKeyboardBuilder()
-        kb_builder.row(*self.__buttons, width=width)
-        keyboard: ReplyKeyboardMarkup = kb_builder.as_markup(resize_keyboard=self.resize_keyboard,
-                                                             is_persistent=self.is_persistent,
-                                                             one_time_keyboard=self.one_time_keyboard)
-        return keyboard
 
 
 animals_kb: ReplyKeyboardMarkup = Keyboard(BUTTONS_LEXICON_RU.dog_button,
@@ -67,8 +50,10 @@ big_button_3 = InlineKeyboardButton(
 )
 
 # Создаем объект инлайн-клавиатуры
-inline_keyboard = InlineKeyboardMarkup(
-    inline_keyboard=[[big_button_1],
-                     [big_button_2],
-                     [big_button_3]]
-)
+# inline_kb = InlineKeyboardMarkup(
+#     inline_keyboard=[[big_button_1],
+#                      [big_button_2],
+#                      [big_button_3]]
+# )
+
+inline_kb = InlineKeyboard('big_button_1', big_button_2, big_button_3='БОЛЬШАЯ КНОПКА 3')(2)
