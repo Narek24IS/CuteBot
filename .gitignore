@@ -9,6 +9,9 @@
 pyvenv.cfg
 .venv
 pip-selfcheck.json
+.mypy_cache/
+venv/
+__pycache__/
 
 ### dotenv template
 .env
