@@ -24,7 +24,7 @@ class Keyboard:
         return keyboard
 
 
-animals_kd: ReplyKeyboardMarkup = Keyboard(BUTTONS_LEXICON_RU.dog_button,
+animals_kb: ReplyKeyboardMarkup = Keyboard(BUTTONS_LEXICON_RU.dog_button,
                                            BUTTONS_LEXICON_RU.fox_button,
                                            BUTTONS_LEXICON_RU.cat_button)(2)
 

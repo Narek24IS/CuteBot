@@ -4,7 +4,7 @@ from aiogram import Router, F
 from aiogram.types import Message, CallbackQuery
 from config import load_config, Config
 from services.functions import save_users_id, send_animal_photo, load_users_id
-from keyboards import animals_kd, inline_keyboard
+from keyboards import animals_kb, inline_keyboard
 
 config: Config = load_config()
 router = Router()
@@ -16,8 +16,9 @@ async def process_start_command(message: Message) -> None:
     print('process_start_message')
     global users_id
     users_id = await save_users_id(message)
+    print(COMMANDS_LEXICON_RU.start.answer)
     await message.answer(COMMANDS_LEXICON_RU.start.answer,
-                         reply_markup=animals_kd)
+                         reply_markup=animals_kb)
 
 
 @router.message(Command(commands='help'))
@@ -26,7 +27,14 @@ async def process_help_command(message: Message) -> None:
     global users_id
     users_id = await save_users_id(message)
     await message.answer(COMMANDS_LEXICON_RU.help.answer,
-                         reply_markup=inline_keyboard)
+                         reply_markup=animals_kb)
+
+async def process_test_command(message: Message) -> None:
+    print('process_test_message')
+    global users_id
+    users_id = await save_users_id(message)
+    await message.answer(COMMANDS_LEXICON_RU.help.answer,
+                         reply_markup=animals_kb)
 
 
 @router.callback_query(F.data == 'big_button_1_pressed')

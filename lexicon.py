@@ -29,6 +29,7 @@ class COMMAND:
 class COMMANDS_LEXICON:
     start: COMMAND
     help: COMMAND
+    test: COMMAND
 
 
 # ---СОЗДАНИЕ ЭКЗЕМПЛЯРОВ--- #
@@ -47,7 +48,7 @@ ANSWER_LEXICON_RU = ANSWER_LEXICON(
 )
 
 HELP_COMMAND_RU = COMMAND(
-    command="/help",
+    command="help",
     description="Получить помощь",
     answer="Заклинания для вызова милашек:\n"
            "1. Хочу котика!\n"
@@ -56,13 +57,20 @@ HELP_COMMAND_RU = COMMAND(
 )
 
 START_COMMAND_RU = COMMAND(
-    command="/start",
+    command="start",
     description="Начать общение",
     answer="Добро пожаловать в обиталище милашек и из любителей!^_^\n"
            "Кого бы вы хотели увидеть?"
 )
 
+TEST_COMMAND_RU = COMMAND(
+    command="test",
+    description="Команда для тестов",
+    answer="Пока ничего нет"
+)
+
 COMMANDS_LEXICON_RU = COMMANDS_LEXICON(
     start=START_COMMAND_RU,
-    help=HELP_COMMAND_RU
+    help=HELP_COMMAND_RU,
+    test=TEST_COMMAND_RU
 )

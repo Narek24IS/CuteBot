@@ -71,7 +71,7 @@ def load_config(path:str="") -> Config:
 async def set_main_menu(bot: Bot):
     main_menu_commands = [
         BotCommand(
-            command=command.command,
+            command="/"+command.command,
             description=command.description
         ) for command in vars(COMMANDS_LEXICON_RU).values()
     ]
