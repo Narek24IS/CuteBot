@@ -23,4 +23,6 @@ __pycache__/
 test.py
 
 ### users id
-users_id.json
+CuteBotDB.db
+
+filtres.py
