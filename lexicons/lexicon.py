@@ -1,38 +1,4 @@
-from dataclasses import dataclass
-
-
-# ---РЕАЛИЗАЦИЯ КЛАССОВ--- #
-@dataclass
-class BUTTONS_LEXICON:
-    dog_button: str
-    cat_button: str
-    fox_button: str
-
-    big_button_1:str
-
-
-@dataclass
-class ANSWER_LEXICON:
-    no_animal: str
-    no_dog: str
-    no_cat: str
-    no_fox: str
-    bot_cant: str
-
-
-@dataclass
-class COMMAND:
-    command: str
-    description: str
-    answer: str
-
-
-@dataclass
-class COMMANDS_LEXICON:
-    start: COMMAND
-    help: COMMAND
-    test: COMMAND
-
+from lexicons.lexicon_classes import BUTTONS_LEXICON, ANSWER_LEXICON, COMMAND, COMMANDS_LEXICON
 
 # ---СОЗДАНИЕ ЭКЗЕМПЛЯРОВ--- #
 BUTTONS_LEXICON_RU = BUTTONS_LEXICON(
@@ -40,7 +6,7 @@ BUTTONS_LEXICON_RU = BUTTONS_LEXICON(
     cat_button='Котика🐈',
     fox_button='Лисичку🦊',
 
-    big_button_1='БОЛЬШАЯ КНОПКА 1'
+    big_button_1_pressed='БОЛЬШАЯ КНОПКА 1'
 )
 
 

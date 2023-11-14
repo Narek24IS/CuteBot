@@ -1,8 +1,8 @@
-from lexicon import COMMANDS_LEXICON_RU, BUTTONS_LEXICON_RU, ANSWER_LEXICON_RU
+from lexicons.lexicon import COMMANDS_LEXICON_RU, BUTTONS_LEXICON_RU, ANSWER_LEXICON_RU
 from aiogram.filters import Command, CommandStart
 from aiogram import Router, F
 from aiogram.types import Message, CallbackQuery
-from config import load_config, Config
+from config.config import load_config, Config
 from services.functions import save_users_id, send_animal_photo, load_users_id
 from keyboards.keyboards import animals_kb, inline_kb
 

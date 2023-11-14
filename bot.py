@@ -1,6 +1,7 @@
 import asyncio
 from handlers import admin_handlers, user_handlers
-from config import load_config, Config, set_main_menu
+from config.config import load_config, Config
+from keyboards.menu import set_main_menu
 from aiogram import Bot, Dispatcher
 
 

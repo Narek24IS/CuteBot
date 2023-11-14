@@ -1,8 +1,7 @@
 from aiogram.types import (KeyboardButton, ReplyKeyboardMarkup, KeyboardButtonPollType,
-                           WebAppInfo, InlineKeyboardButton, InlineKeyboardMarkup)
-from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
+                           WebAppInfo, InlineKeyboardButton)
 from keyboards.keyboard_builders import Keyboard, InlineKeyboard
-from lexicon import BUTTONS_LEXICON_RU
+from lexicons.lexicon import BUTTONS_LEXICON_RU
 
 
 
@@ -56,4 +55,4 @@ big_button_3 = InlineKeyboardButton(
 #                      [big_button_3]]
 # )
 
-inline_kb = InlineKeyboard('big_button_1', big_button_2, big_button_3='БОЛЬШАЯ КНОПКА 3')(2)
+inline_kb = InlineKeyboard('big_button_1_pressed', big_button_2, big_button_3_pressed='БОЛЬШАЯ КНОПКА 3')(2)

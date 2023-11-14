@@ -25,4 +25,4 @@ test.py
 ### users id
 CuteBotDB.db
 
-filtres.py
+filtres/filtres.py

@@ -1,5 +1,5 @@
 from aiogram import Router, F
-from config import load_config, Config
+from config.config import load_config, Config
 
 config: Config = load_config()
 router = Router()

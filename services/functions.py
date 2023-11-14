@@ -1,14 +1,14 @@
 import sqlite3
 import requests
 from aiogram.types import Message
-from config import load_config, Config
-from lexicon import ANSWER_LEXICON_RU
+from config.config import load_config, Config
+from lexicons.lexicon import ANSWER_LEXICON_RU
 
 config: Config = load_config()
 
 
 def load_users_id() -> list[int]:
-    with sqlite3.connect("../CuteBotDB.db") as connection:
+    with sqlite3.connect(f"../{config.db.database}.db") as connection:
         cursor = connection.cursor()
         cursor.execute('''CREATE TABLE IF NOT EXISTS users (
                     id INTEGER PRIMARY KEY UNIQUE,
@@ -35,7 +35,7 @@ async def save_users_id(message: Message) -> list[int]:
     global users_id
 
     print(f'{message.from_user.first_name}: {message.text}')
-    with sqlite3.connect("../CuteBotDB.db") as connection:
+    with sqlite3.connect(f"../{config.db.database}.db") as connection:
         cursor = connection.cursor()
         try:
             # Начинаем транзакцию автоматически

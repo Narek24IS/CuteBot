@@ -1,6 +1,3 @@
-from aiogram import Bot
-from aiogram.types import BotCommand
-from lexicon import COMMANDS_LEXICON_RU
 from environs import Env
 from dataclasses import dataclass
 
@@ -44,7 +41,7 @@ def load_config(path:str="") -> Config:
         env = Env()
         env.read_env()
 
-    full_config:Config = Config(
+    return Config(
         api=ApiUrl(
             bot="https://api.telegram.org/bot",
             cat="https://api.thecatapi.com/v1/images/search",
@@ -63,19 +60,8 @@ def load_config(path:str="") -> Config:
         )
     )
 
-    return full_config
 
 
-
-# Функция для настройки кнопки Menu бота
-async def set_main_menu(bot: Bot):
-    main_menu_commands = [
-        BotCommand(
-            command="/"+command.command,
-            description=command.description
-        ) for command in vars(COMMANDS_LEXICON_RU).values()
-    ]
-    await bot.set_my_commands(main_menu_commands)
 
 if __name__ == '__main__':
     config = load_config()
