@@ -1,26 +1,15 @@
 import sqlite3
 import requests
 from aiogram.types import Message
-from config.config import load_config, Config
+from config.config import config
 from lexicons.lexicon import ANSWER_LEXICON_RU
+from services.db_connection import bot_database
 
-config: Config = load_config()
+# config: Config = load_config()
 
 
 def load_users_id() -> list[int]:
-    with sqlite3.connect(f"../{config.db.database}.db") as connection:
-        cursor = connection.cursor()
-        cursor.execute('''CREATE TABLE IF NOT EXISTS users (
-                    id INTEGER PRIMARY KEY UNIQUE,
-                    username TEXT,
-                    name TEXT
-                )''')
-
-        cursor.execute("SELECT * FROM users")
-        users_id_list:list[int] = [row[0] for row in cursor.fetchall()]
-
-    return users_id_list
-
+    return bot_database.get_table_data_as_dict('users').keys()
 
 # users_id = load_users_id()
 users_id = load_users_id()
@@ -35,24 +24,10 @@ async def save_users_id(message: Message) -> list[int]:
     global users_id
 
     print(f'{message.from_user.first_name}: {message.text}')
-    with sqlite3.connect(f"../{config.db.database}.db") as connection:
-        cursor = connection.cursor()
-        try:
-            # Начинаем транзакцию автоматически
-            with connection:
-                if sender_id not in users_id:
-                    cursor.execute("INSERT INTO users (id, username, name) VALUES (?, ?, ?)",
-                                   (sender_id, username, name))
-                    print('ИД сохранён')
-                    connection.commit()
 
-            return load_users_id()
+    bot_database.user_interface.create_if_not_exists(sender_id, username, name)
 
-        except Exception as ex:
-            # Ошибки будут приводить к автоматическому откату транзакции
-            print(ex)
-            print('Ошибка при сохранении ИД')
-            return load_users_id()
+    return load_users_id()
 
 
 async def send_animal_photo(message: Message, animal: str) -> None:
